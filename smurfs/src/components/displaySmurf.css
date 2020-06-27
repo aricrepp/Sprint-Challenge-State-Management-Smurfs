@@ -1,0 +1,14 @@
+.smurf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.smurf-card {
+  background-color: aquamarine;
+  border-radius: 5px;
+  border: solid 1px aqua;
+  width: 200px;
+  margin: 5px;
+}

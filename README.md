@@ -23,10 +23,25 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+The problem we as React developers face is how large and cumbersome our state can become as we scale our app up. Context helps solve some of the problem by storing data on a Context object rather than through props which makes our life a little easier by not having to prop drill for the data we need.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+If I was to compare them to the real world, the store could be like Cosco, the actions are like the choices you make picking our groceries around the store, and the reducer would be the executing of your actions so like going to checkout confiming what youre purchasing.
+The store can be known as the single source of truth because it is the only location where you can obtain data within our app.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Component state is just the data that would live on an individual component while Application state would be more of a global state. Application level state is essentially what Redux is solving by giving us access to our data in a global scale without having to prop drill, or hoist our data across components
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux-thunk allows us to use our actions in an asynchronous manner from within our actions creators. We would make the async call, wait for it, and on return we would make the action call for it and dispatch it to the reducer.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+My favorite would be Redux because it approaches how to handle large scale apps. Many times when youre learning something new, said thing never discusses how to handle your app as it begins to grow and youre left trying to figure out how that problem might be solved in industry.
 
 ## Project Set Up
 
@@ -64,8 +79,8 @@ Follow these steps to set up your project:
     name: "Brainey",
     age: 200,
     height: "5cm",
-    id: 0
-  }
+    id: 0,
+  },
 ];
 ```
 
@@ -97,14 +112,14 @@ Example of object created in Smurf DB:
     name: "Brainey",
     age: 200,
     height: "5cm",
-    id: 0
+    id: 0,
   },
   {
     name: "Sleepy",
     age: 200,
     height: "5cm",
-    id: 1
-  }
+    id: 1,
+  },
 ];
 ```
 
@@ -157,7 +172,7 @@ output: [
     name: "Sleepy",
     age: 200,
     height: "5cm",
-    id: 1
-  }
+    id: 1,
+  },
 ];
 ```
