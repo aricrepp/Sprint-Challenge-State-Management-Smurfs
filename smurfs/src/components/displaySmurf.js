@@ -1,13 +1,27 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getSmurf} from '../actions/actions';
+import axios from 'axios';
 import './displaySmurf.css';
 
-const DisplaySmurf = ({getSmurf, isFetching, smurfs}) =>{
+const DisplaySmurf = ({getSmurf, isFetching, smurfs}) =>{  
 
-useEffect(() => {
-    getSmurf();
-}, [getSmurf]);
+    const handleDelete = e => {
+        axios
+          .delete(`http://localhost:3333/smurfs/${e}`)
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      };
+  
+
+
+    useEffect(() => {
+        getSmurf();
+    }, [getSmurf]);
 
     if(!isFetching){
         return(
@@ -18,7 +32,7 @@ useEffect(() => {
     return(
         <div className='smurf'>
             {smurfs.map((item, index) => (
-                <div className='smurf-card'>
+                <div className='smurf-card' onClick={handleDelete(index)}>
                     <p key={index}>{item.name}</p>
                     <p key={index}>{item.age} years old</p>
                     <p key={index}>{item.height}</p>
@@ -29,11 +43,13 @@ useEffect(() => {
 }
 
 
-const mapStatetoProps = state => {
+const mapStateIntoProps = state => {
     return {
         smurfs: state.smurfs,
         isFetching: state.isFetching,
     };
 }
 
-export default connect(mapStatetoProps, {getSmurf})(DisplaySmurf);
+const mapDispatchToProps = {getSmurf};
+
+export default connect(mapStateIntoProps, mapDispatchToProps)(DisplaySmurf);
